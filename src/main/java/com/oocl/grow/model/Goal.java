@@ -35,4 +35,6 @@ public class Goal {
     private Date goal_deadline_data;
 
     private Date goal_completed_data;
+
+    private int state;
 }
