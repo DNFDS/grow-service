@@ -19,7 +19,6 @@ import java.util.Date;
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Size(min = 3, max = 20)

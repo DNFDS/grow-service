@@ -20,7 +20,6 @@ import java.util.Date;
 @Entity
 public class Goal {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String goalId;
 
     @Size(max = 8)
@@ -32,11 +31,11 @@ public class Goal {
     @Size(max = 100)
     private String goalDescription;
 
-    private Date goalStartData;
+    private Date goalStartDate;
 
-    private Date goalDeadlineData;
+    private Date goalDeadlineDate;
 
-    private Date goalCompletedData;
+    private Date goalCompletedDate;
 
     private int goalState;
 }

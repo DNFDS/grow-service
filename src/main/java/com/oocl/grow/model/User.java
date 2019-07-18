@@ -19,7 +19,6 @@ import java.util.Date;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Size(max = 8)
     private String userId;
 

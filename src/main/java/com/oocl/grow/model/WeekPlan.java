@@ -19,7 +19,6 @@ import java.util.Date;
 @Entity
 public class WeekPlan {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Size(max = 8)
     private String weekPlanId;
 
