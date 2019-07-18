@@ -3,8 +3,7 @@ package com.oocl.grow.service;
 import com.oocl.grow.model.WeekPlan;
 import com.oocl.grow.repository.WeekPlanRepository;
 import org.junit.Before;
-
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ import static java.util.Collections.singletonList;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @RunWith(SpringRunner.class)
-class WeekPlanServiceImplIntegrationTest {
+public class WeekPlanServiceImplIntegrationTest {
 
     @Autowired
     private WeekPlanService weekPlanService;
@@ -29,8 +28,8 @@ class WeekPlanServiceImplIntegrationTest {
 
     @Before
     public void setUp() {
-        WeekPlan weekPlan_test = WeekPlan.builder().goalId("300001").build();
-        weekPlan_test.setGoalId("2000001");
+        WeekPlan weekPlan_test = WeekPlan.builder().weekPlanId("300001").build();
+        weekPlan_test.setGoalId("200001");
         Mockito.when(weekPlanRepository.findAllByGoalId(weekPlan_test.getGoalId())).thenReturn(singletonList(weekPlan_test));
         Mockito.when(weekPlanRepository.findByWeekPlanId(weekPlan_test.getWeekPlanId())).thenReturn(weekPlan_test);
     }
@@ -53,7 +52,7 @@ class WeekPlanServiceImplIntegrationTest {
     @Test
     public void should_getAllWeekPlans() {
         WeekPlan week_plan_test = WeekPlan.builder().weekPlanId("300001").build();
-        week_plan_test.setGoalId("2000001");
+        week_plan_test.setGoalId("200001");
         List<WeekPlan> week_plans = weekPlanService.getAllWeekPlansByGoalId(week_plan_test.getGoalId());
         assertThat(week_plans.size()).isEqualTo(1);
         assertThat(week_plans.get(0).getWeekPlanId()).isEqualTo(week_plan_test.getWeekPlanId());
