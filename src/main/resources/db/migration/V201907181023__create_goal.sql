@@ -1,12 +1,12 @@
 CREATE TABLE IF NOT EXISTS `goal` (
 
-    `goal_id` varchar (8) NOT NULL PRIMARY KEY,
-    `user_id` varchar (8),
-    `goal_title` varchar(40),
-    `goal_description` varchar (100),
-    `goal_start_data` DATA ,
-    `goal_deadline_data` DATA ,
-    `goal_complete_data` DATA ,
-    `goal_state` INT ,
+    `goalId` varchar (8) NOT NULL PRIMARY KEY,
+    `userId` varchar (8),
+    `goalTitle` varchar(40),
+    `goalDescription` varchar (100),
+    `goalStartData` DATA ,
+    `goalDeadlineData` DATA ,
+    `goalCompleteData` DATA ,
+    `goalState` INT ,
 
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;

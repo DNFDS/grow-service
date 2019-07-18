@@ -21,20 +21,20 @@ public class Week_plan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Size(max = 8)
-    private String week_plan_id;
+    private String weekPlanId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Size(max = 8)
-    private String goal_id;
+    private String goalId;
 
     @Size(max = 40)
-    private String week_plan_title;
+    private String weekPlanTitle;
 
     @Size(max = 100)
-    private String week_plan_description;
+    private String weekPlanDescription;
 
-    private int week_plan_number;
+    private int weekPlanNumber;
 
-    private int week_plan_state;
+    private int weekPlanState;
 }

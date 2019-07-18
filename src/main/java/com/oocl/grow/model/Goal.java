@@ -22,24 +22,24 @@ public class Goal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Size(max = 8)
-    private String goal_id;
+    private String goalId;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Size(max = 8)
-    private String user_id;
+    private String userId;
 
     @Size(max = 40)
-    private String goal_title;
+    private String goalTitle;
 
     @Size(max = 100)
-    private String goal_description;
+    private String goalDescription;
 
-    private Date goal_start_data;
+    private Date goalStartData;
 
-    private Date goal_deadline_data;
+    private Date goalDeadlineData;
 
-    private Date goal_completed_data;
+    private Date goalCompletedData;
 
-    private int goal_state;
+    private int goalState;
 }

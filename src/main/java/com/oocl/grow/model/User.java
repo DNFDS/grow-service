@@ -21,9 +21,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Size(max = 8)
-    private String user_id;
+    private String userId;
 
     @Size(max = 20)
-    private String user_name;
+    private String userName;
 
 }
