@@ -17,16 +17,13 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Employee {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Size(max = 8)
+    private String user_id;
 
-    @Size(min = 3, max = 20)
-    private String name;
+    @Size(max = 20)
+    private String user_name;
 
-    @Size(max = 50)
-    private String email;
-
-    private Date dateOfBirth;
 }

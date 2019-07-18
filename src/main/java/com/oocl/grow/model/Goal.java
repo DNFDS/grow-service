@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Tables;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,13 +18,21 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 @Entity
-public class User {
+public class Goal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Size(min = 3, max = 8)
-    private String user_id;
+    @Size(max = 8)
+    private String goal_id;
 
-    @Size(min = 3, max = 20)
-    private String user_name;
+    @Size(max = 40)
+    private String goal_title;
 
+    @Size(max = 100)
+    private String goal_description;
+
+    private Date goal_start_data;
+
+    private Date goal_deadline_data;
+
+    private Date goal_completed_data;
 }

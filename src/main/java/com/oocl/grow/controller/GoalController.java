@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
-public class EmployeeRestController {
+@RequestMapping("/goal")
+public class GoalController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/employees")
-    public List<Employee> getAllEmployees() {
+    @GetMapping("/get_all_goals")
+    public List<Employee> getAllGoals() {
         return employeeService.getAllEmployees();
     }
 }
