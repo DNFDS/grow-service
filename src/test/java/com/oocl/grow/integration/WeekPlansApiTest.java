@@ -34,15 +34,15 @@ public class WeekPlansApiTest {
     public void givenWeekPlans_whenGetWeekPlans_thenStatus200()
             throws Exception {
 
-        createTestWeekPlan("100001");
+        createTestWeekPlan("300001");
 
         mvc.perform(get("/week_plan/get_all_week_plans")
-                .param("week_plan_id","100001")
+                .param("week_plan_id","300001")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$[0].weekPlanId", is("100001")));
+                .andExpect(jsonPath("$[0].weekPlanId", is("300001")));
     }
 
     private void createTestWeekPlan(String week_plan_id) {
