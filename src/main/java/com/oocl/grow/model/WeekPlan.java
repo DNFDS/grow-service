@@ -23,8 +23,6 @@ public class WeekPlan {
     @Size(max = 8)
     private String weekPlanId;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Size(max = 8)
     private String goalId;
 

@@ -5,6 +5,6 @@ CREATE TABLE IF NOT EXISTS `week_plan` (
     `weekPlanTitle` varchar(40),
     `weekPlanDescription` varchar (100),
     `weekPlanNumber` INT ,
-    `weekPlanState` INT ,
+    `weekPlanState` INT
 
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;

@@ -7,6 +7,6 @@ CREATE TABLE IF NOT EXISTS `goal` (
     `goalStartData` DATE ,
     `goalDeadlineData` DATE ,
     `goalCompleteData` DATE ,
-    `goalState` INT ,
+    `goalState` INT
 
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;

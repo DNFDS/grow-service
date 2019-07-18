@@ -21,7 +21,6 @@ import java.util.Date;
 public class Goal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Size(max = 8)
     private String goalId;
 
     @Size(max = 8)

@@ -29,5 +29,6 @@ public class GoalController {
     public Goal getGoalById(HttpServletRequest request) {
         String goal_id = request.getParameter("goal_id");
         return goalService.getGoalById(goal_id);
+
     }
 }
