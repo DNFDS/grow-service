@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface GoalRepository extends JpaRepository<Goal, String> {
-    Goal findOneByGoal_id(String id);
-    List<Goal> findAll();
+    Goal findOneByGoal_id(String goal_id);
+    List<Goal> findAllByUserId(String user_id);
 }

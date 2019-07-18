@@ -6,6 +6,6 @@ import com.oocl.grow.model.Goal;
 import java.util.List;
 
 public interface GoalService {
-    Goal getGoalById(String name);
-    List<Goal> getAllGoalsByUser_id();
+    Goal getGoalById(String goal_id);
+    List<Goal> getAllGoalsByUser_id(String user_id);
 }

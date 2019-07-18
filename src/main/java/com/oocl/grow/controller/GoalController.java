@@ -21,12 +21,13 @@ public class GoalController {
 
     @GetMapping("/get_all_goals")
     public List<Goal> getAllGoals(HttpServletRequest request) {
-        String user_id = request.getParameter("goal_id");
+        String user_id = request.getParameter("user_id");
         return goalService.getAllGoalsByUser_id(user_id);
     }
 
     @GetMapping("/get_goal_detail_by_id")
-    public List<Goal> getGoalDetailById() {
-        return goalService.getGoalById();
+    public Goal getGoalDetailById(HttpServletRequest request) {
+        String goal_id = request.getParameter("goal_id");
+        return goalService.getGoalById(goal_id);
     }
 }

@@ -15,12 +15,12 @@ public class GoalServiceImpl implements GoalService {
     private GoalRepository goalRepository;
 
     @Override
-    public Goal getGoalById(String name) {
-        return goalRepository.findOneByGoal_id(name);
+    public Goal getGoalById(String goal_id) {
+        return goalRepository.findOneByGoal_id(goal_id);
     }
 
     @Override
-    public List<Goal> getAllGoals() {
-        return goalRepository.findAll();
+    public List<Goal> getAllGoalsByUser_id(String user_id) {
+        return goalRepository.findAllByUserId(user_id);
     }
 }
