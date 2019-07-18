@@ -32,19 +32,20 @@ public class GoalsApiTest {
     public void givenGoals_whenGetGoals_thenStatus200()
             throws Exception {
 
-        createTestGoal("100001");
+        createTestGoal("200001");
 
         mvc.perform(get("/goal/get_all_goals")
-                .param("goal_id","100001")
+                .param("user_id","100001")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content()
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$[0].goalId", is("100001")));
+                .andExpect(jsonPath("$[0].goalId", is("200001")));
     }
 
     private void createTestGoal(String goal_id) {
         Goal goal = Goal.builder().goalId(goal_id).build();
+        goal.setUserId("1000001");
         repository.saveAndFlush(goal);
     }
 }

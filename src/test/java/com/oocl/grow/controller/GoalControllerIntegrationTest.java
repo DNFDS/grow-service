@@ -1,7 +1,7 @@
 package com.oocl.grow.controller;
 
-import com.oocl.grow.model.Employee;
-import com.oocl.grow.service.EmployeeService;
+import com.oocl.grow.model.Goal;
+import com.oocl.grow.service.GoalService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,24 +22,38 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(EmployeeRestController.class)
-public class EmployeeRestControllerIntegrationTest {
+@WebMvcTest(GoalController.class)
+public class GoalControllerIntegrationTest {
     @Autowired
     private MockMvc mvc;
 
     @MockBean
-    private EmployeeService service;
+    private GoalService service;
 
     @Test
-    public void givenEmployees_whenGetEmployees_thenReturnJSONArray() throws Exception {
-        Employee alex = Employee.builder().name("alex").build();
-        List<Employee> employees = asList(alex);
+    public void givenGoals_whenGetGoals_thenReturnJSONArray() throws Exception {
+        Goal goal_test = Goal.builder().goalId("200001").build();
+        goal_test.setUserId("100001");
+        List<Goal> goals = asList(goal_test);
 
-        given(service.getAllEmployees()).willReturn(employees);
+        given(service.getAllGoalsByUserId(goal_test.getUserId())).willReturn(goals);
 
-        mvc.perform(get("/api/employees").contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/goal/get_all_goals").contentType(MediaType.APPLICATION_JSON)
+                .param("user_id","100001"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].name", is(alex.getName())));
+                .andExpect(jsonPath("$[0].goalId", is(goal_test.getGoalId())));
+    }
+
+    @Test
+    public void givenGoals_whenGetGoalByGoalId_thenReturnJSONArray() throws Exception {
+        Goal goal_test = Goal.builder().goalId("200001").build();
+
+        given(service.getGoalById(goal_test.getGoalId())).willReturn(goal_test);
+
+        mvc.perform(get("/goal/get_goal_detail_by_id").contentType(MediaType.APPLICATION_JSON)
+                .param("goal_id","200001"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.goalId", is(goal_test.getGoalId())));
     }
 }

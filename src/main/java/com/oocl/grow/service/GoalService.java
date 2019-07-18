@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface GoalService {
     Goal getGoalById(String goal_id);
-    List<Goal> getAllGoalsByUser_id(String user_id);
+    List<Goal> getAllGoalsByUserId(String user_id);
 }

@@ -24,8 +24,6 @@ public class Goal {
     @Size(max = 8)
     private String goalId;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Size(max = 8)
     private String userId;
 
