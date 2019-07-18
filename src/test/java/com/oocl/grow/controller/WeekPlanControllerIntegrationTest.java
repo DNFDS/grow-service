@@ -1,8 +1,6 @@
 package com.oocl.grow.controller;
 
-import com.oocl.grow.model.Goal;
 import com.oocl.grow.model.WeekPlan;
-import com.oocl.grow.service.GoalService;
 import com.oocl.grow.service.WeekPlanService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(GoalController.class)
+@WebMvcTest(WeekPlanController.class)
 public class WeekPlanControllerIntegrationTest {
     @Autowired
     private MockMvc mvc;
@@ -51,7 +49,7 @@ public class WeekPlanControllerIntegrationTest {
     public void givenWeek_plan_whenGetWeek_planByWeekPlanId_thenReturnJSONArray() throws Exception {
         WeekPlan week_plan_test = WeekPlan.builder().weekPlanId("300001").build();
 
-        given(service.getWeekPlanById(week_plan_test.getGoalId())).willReturn(week_plan_test);
+        given(service.getWeekPlanById(week_plan_test.getWeekPlanId())).willReturn(week_plan_test);
 
         mvc.perform(get("/week_plan/get_week_plan_detail_by_id").contentType(MediaType.APPLICATION_JSON)
                 .param("week_plan_id","300001"))
