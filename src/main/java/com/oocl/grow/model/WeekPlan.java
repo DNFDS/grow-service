@@ -17,7 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Week_plan {
+public class WeekPlan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Size(max = 8)
