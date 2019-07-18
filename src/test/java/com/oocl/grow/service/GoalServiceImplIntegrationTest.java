@@ -28,7 +28,7 @@ public class GoalServiceImplIntegrationTest {
     @Before
     public void setUp() {
         Goal goal_text = Goal.builder().goalId("200001").build();
-        goal_text.setUserId("1000001");
+        goal_text.setUserId("100001");
         Mockito.when(goalRepository.findAllByUserId(goal_text.getUserId())).thenReturn(singletonList(goal_text));
         Mockito.when(goalRepository.findOneByGoalId(goal_text.getGoalId())).thenReturn(goal_text);
     }
@@ -51,7 +51,7 @@ public class GoalServiceImplIntegrationTest {
     @Test
     public void should_getAllEmployees() {
         Goal goal_text = Goal.builder().goalId("200001").build();
-        goal_text.setUserId("1000001");
+        goal_text.setUserId("100001");
         List<Goal> goals = goalService.getAllGoalsByUserId(goal_text.getUserId());
         assertThat(goals.size()).isEqualTo(1);
         assertThat(goals.get(0).getGoalId()).isEqualTo(goal_text.getGoalId());

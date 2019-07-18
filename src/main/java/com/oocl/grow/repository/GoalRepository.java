@@ -10,4 +10,5 @@ import java.util.List;
 public interface GoalRepository extends JpaRepository<Goal, String> {
     Goal findOneByGoalId(String goal_id);
     List<Goal> findAllByUserId(String user_id);
+    Boolean deleteGoalByGoalId(String goal_id);
 }

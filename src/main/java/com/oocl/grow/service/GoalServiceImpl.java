@@ -1,8 +1,6 @@
 package com.oocl.grow.service;
 
-import com.oocl.grow.model.Employee;
 import com.oocl.grow.model.Goal;
-import com.oocl.grow.repository.EmployeeRepository;
 import com.oocl.grow.repository.GoalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,5 +23,8 @@ public class GoalServiceImpl implements GoalService {
     }
 
     @Override
-    public Goal saveGoal(Goal goal){return goalRepository.save(goal);};
+    public Goal saveGoal(Goal goal){return goalRepository.save(goal);}
+
+    @Override
+    public Boolean deleteGoalByGoalId(String goal_id){return goalRepository.deleteGoalByGoalId(goal_id);}
 }
