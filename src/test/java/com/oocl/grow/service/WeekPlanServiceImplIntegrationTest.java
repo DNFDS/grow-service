@@ -31,8 +31,8 @@ class WeekPlanServiceImplIntegrationTest {
 
     @Before
     public void setUp() {
-        WeekPlan weekPlan_test = WeekPlan.builder().goalId("200001").build();
-        weekPlan_test.setGoalId("1000001");
+        WeekPlan weekPlan_test = WeekPlan.builder().goalId("300001").build();
+        weekPlan_test.setGoalId("2000001");
         Mockito.when(weekPlanRepository.findAllByGoalId(weekPlan_test.getGoalId())).thenReturn(singletonList(weekPlan_test));
         Mockito.when(weekPlanRepository.findByWeekPlanId(weekPlan_test.getGoalId())).thenReturn(weekPlan_test);
     }
@@ -47,15 +47,15 @@ class WeekPlanServiceImplIntegrationTest {
 
     @org.junit.Test
     public void should_findByWeekPlanId_given_week_plan_id(){
-        String week_plan_id = "200001";
+        String week_plan_id = "300001";
         WeekPlan weekPlan = weekPlanService.getWeekPlanById(week_plan_id);
         assertThat(weekPlan.getWeekPlanId()).isEqualTo(week_plan_id);
     }
 
     @org.junit.Test
     public void should_getAllWeekPlans() {
-        WeekPlan week_plan_test = WeekPlan.builder().weekPlanId("200001").build();
-        week_plan_test.setGoalId("1000001");
+        WeekPlan week_plan_test = WeekPlan.builder().weekPlanId("300001").build();
+        week_plan_test.setGoalId("2000001");
         List<WeekPlan> week_plans = weekPlanService.getAllWeekPlansByGoalId(week_plan_test.getGoalId());
         assertThat(week_plans.size()).isEqualTo(1);
         assertThat(week_plans.get(0).getWeekPlanId()).isEqualTo(week_plan_test.getWeekPlanId());
