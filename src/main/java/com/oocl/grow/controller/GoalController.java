@@ -35,8 +35,12 @@ public class GoalController {
     }
 
     @GetMapping("/delete_goal_by_id")
-    public Boolean deleteGoalByGoalId(HttpServletRequest request) {
+    public Integer deleteGoalByGoalId(HttpServletRequest request) {
         String goal_id = request.getParameter("goal_id");
         return goalService.deleteGoalByGoalId(goal_id);
+    }
+    @GetMapping("/update_goal")
+    public Goal deleteGoalByGoalId(@RequestBody Goal goal) {
+        return goalService.saveGoal(goal);
     }
 }

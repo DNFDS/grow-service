@@ -5,9 +5,11 @@ import com.oocl.grow.repository.GoalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class GoalServiceImpl implements GoalService {
     @Autowired
     private GoalRepository goalRepository;
@@ -26,5 +28,5 @@ public class GoalServiceImpl implements GoalService {
     public Goal saveGoal(Goal goal){return goalRepository.save(goal);}
 
     @Override
-    public Boolean deleteGoalByGoalId(String goal_id){return goalRepository.deleteGoalByGoalId(goal_id);}
+    public Integer deleteGoalByGoalId(String goal_id){return goalRepository.deleteGoalByGoalId(goal_id);}
 }
