@@ -5,10 +5,7 @@ import com.oocl.grow.model.Goal;
 import com.oocl.grow.service.EmployeeService;
 import com.oocl.grow.service.GoalService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -29,6 +26,11 @@ public class GoalController {
     public Goal getGoalById(HttpServletRequest request) {
         String goal_id = request.getParameter("goal_id");
         return goalService.getGoalById(goal_id);
+    }
 
+    @GetMapping("/sava_goal")
+    public Goal savaGoal() {
+        Goal docker_mysql = Goal.builder().goalId("200001").userId("100001").goalTitle("docker mysql").build();
+        return goalService.saveGoal(docker_mysql);
     }
 }

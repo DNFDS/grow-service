@@ -1,8 +1,6 @@
 package com.oocl.grow.service;
 
-import com.oocl.grow.model.Goal;
 import com.oocl.grow.model.WeekPlan;
-import com.oocl.grow.repository.GoalRepository;
 import com.oocl.grow.repository.WeekPlanRepository;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -18,7 +16,6 @@ import java.util.List;
 
 import static java.util.Collections.singletonList;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 class WeekPlanServiceImplIntegrationTest {
@@ -45,14 +42,14 @@ class WeekPlanServiceImplIntegrationTest {
         }
     }
 
-    @org.junit.Test
+    @Test
     public void should_findByWeekPlanId_given_week_plan_id(){
         String week_plan_id = "300001";
         WeekPlan weekPlan = weekPlanService.getWeekPlanById(week_plan_id);
         assertThat(weekPlan.getWeekPlanId()).isEqualTo(week_plan_id);
     }
 
-    @org.junit.Test
+    @Test
     public void should_getAllWeekPlans() {
         WeekPlan week_plan_test = WeekPlan.builder().weekPlanId("300001").build();
         week_plan_test.setGoalId("2000001");

@@ -23,4 +23,7 @@ public class GoalServiceImpl implements GoalService {
     public List<Goal> getAllGoalsByUserId(String user_id) {
         return goalRepository.findAllByUserId(user_id);
     }
+
+    @Override
+    public Goal saveGoal(Goal goal){return goalRepository.save(goal);};
 }
