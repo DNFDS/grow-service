@@ -44,7 +44,7 @@ public class WeekPlansApiTest {
                         .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].weekPlanId", is("300001")));
     }
-    @Test
+
     private void createTestWeekPlan(String week_plan_id) {
         WeekPlan week_plan = WeekPlan.builder().weekPlanId(week_plan_id).build();
         repository.saveAndFlush(week_plan);
