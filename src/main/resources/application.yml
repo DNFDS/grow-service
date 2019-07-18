@@ -5,6 +5,6 @@ spring:
     url: jdbc:mysql://localhost/grow_dev?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: pass
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true

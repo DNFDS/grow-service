@@ -4,9 +4,9 @@ CREATE TABLE IF NOT EXISTS `goal` (
     `userId` varchar (8),
     `goalTitle` varchar(40),
     `goalDescription` varchar (100),
-    `goalStartData` DATA ,
-    `goalDeadlineData` DATA ,
-    `goalCompleteData` DATA ,
+    `goalStartData` DATE ,
+    `goalDeadlineData` DATE ,
+    `goalCompleteData` DATE ,
     `goalState` INT ,
 
 )ENGINE=InnoDB DEFAULT CHARSET=UTF8;
