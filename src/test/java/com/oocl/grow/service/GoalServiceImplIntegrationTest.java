@@ -1,8 +1,6 @@
 package com.oocl.grow.service;
 
-import com.oocl.grow.model.Employee;
 import com.oocl.grow.model.Goal;
-import com.oocl.grow.repository.EmployeeRepository;
 import com.oocl.grow.repository.GoalRepository;
 import org.junit.Before;
 import org.junit.Test;

@@ -3,6 +3,7 @@ package com.oocl.grow.service;
 import com.oocl.grow.model.WeekPlan;
 import com.oocl.grow.repository.WeekPlanRepository;
 import org.junit.Before;
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -31,13 +32,13 @@ class WeekPlanServiceImplIntegrationTest {
         WeekPlan weekPlan_test = WeekPlan.builder().goalId("300001").build();
         weekPlan_test.setGoalId("2000001");
         Mockito.when(weekPlanRepository.findAllByGoalId(weekPlan_test.getGoalId())).thenReturn(singletonList(weekPlan_test));
-        Mockito.when(weekPlanRepository.findByWeekPlanId(weekPlan_test.getGoalId())).thenReturn(weekPlan_test);
+        Mockito.when(weekPlanRepository.findByWeekPlanId(weekPlan_test.getWeekPlanId())).thenReturn(weekPlan_test);
     }
 
     @TestConfiguration
     static class WeekPlanServiceImplTestContextConfiguration {
         @Bean
-        public WeekPlanService goalService() {
+        public WeekPlanService weekPlanService() {
             return new WeekPlanServiceImpl();
         }
     }
