@@ -1,5 +1,7 @@
 package com.oocl.grow.integration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.oocl.grow.GrowApplication;
 import com.oocl.grow.model.Goal;
 import com.oocl.grow.repository.GoalRepository;
@@ -15,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
@@ -29,7 +32,7 @@ public class GoalsApiTest {
     private GoalRepository repository;
 
     @Test
-    public void givenGoals_whenGetGoals_thenStatus200()
+    public void givenUser_id_whenGetGoals_thenStatus200()
             throws Exception {
 
         createTestGoal("200001");
@@ -43,9 +46,74 @@ public class GoalsApiTest {
                 .andExpect(jsonPath("$[0].goalId", is("200001")));
     }
 
+    @Test
+    public void givenGoal_id_whenGetGoal_thenStatus200()
+            throws Exception {
+
+        createTestGoal("200001");
+
+        mvc.perform(get("/goal/get_goal_detail_by_id")
+                .param("goal_id","200001")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.goalId", is("200001")));
+    }
+
+    @Test
+    public void givenGoal_whenCreateGoal_thenStatus200()
+            throws Exception {
+        Goal goal_test = Goal.builder().goalId("200002").userId("100001").goalTitle("docker mysql").build();
+        //设置值
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
+        java.lang.String requestJson = ow.writeValueAsString(goal_test);
+        mvc.perform(post("/goal/save_goal")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestJson))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.goalId", is("200002")));
+    }
+
+    @Test
+    public void givenGoal_whenUpdateGoal_thenStatus200()
+            throws Exception {
+        createTestGoal("200001");
+        Goal goal_test = Goal.builder().goalId("200002").userId("100001").goalTitle("docker mysql").build();
+        //设置值
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
+        java.lang.String requestJson = ow.writeValueAsString(goal_test);
+        mvc.perform(post("/goal/update_goal")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestJson))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.goalId", is("200002")));
+    }
+
+    @Test
+    public void givenGoal_id_whenDeleteGoal_thenStatus200()
+            throws Exception {
+
+        createTestGoal("200001");
+
+        mvc.perform(get("/goal/delete_goal_by_id")
+                .param("goal_id","200001")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$", is(1)));
+    }
+
     private void createTestGoal(String goal_id) {
         Goal goal = Goal.builder().goalId(goal_id).build();
-        goal.setUserId("1000001");
+        goal.setUserId("100001");
         repository.saveAndFlush(goal);
     }
 }
