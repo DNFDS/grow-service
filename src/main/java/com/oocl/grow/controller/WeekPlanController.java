@@ -31,7 +31,7 @@ public class WeekPlanController {
         return weekPlanService.getWeekPlanById(week_plan_id);
     }
 
-    @DeleteMapping ("/delete_week_plan_by_id")
+    @GetMapping ("/delete_week_plan_by_id")
     public Integer deleteWeekPlanById(HttpServletRequest request){
         String week_plan_id = request.getParameter("week_plan_id");
         return weekPlanService.deleteWeekPlanByWeekPlanId(week_plan_id);
