@@ -37,7 +37,7 @@ public class WeekPlanController {
         return weekPlanService.deleteWeekPlanByWeekPlanId(week_plan_id);
     }
 
-    @PostMapping("/save_week_plan")
+    @GetMapping("/save_week_plan")
     public WeekPlan saveWeekPlan(){
         WeekPlan weekPlan = WeekPlan.builder().weekPlanId("300002").goalId("200001").weekPlanTitle("bulid success").build();
         return weekPlanService.saveWeekPlan(weekPlan);

@@ -28,10 +28,10 @@ public class GoalController {
         return goalService.getGoalById(goal_id);
     }
 
-    @PostMapping("/save_goal")
-    public Goal saveGoal(@RequestBody Goal goal) {
-        //Goal docker_mysql = Goal.builder().goalId("200002").userId("100001").goalTitle("docker mysql").build();
-        return goalService.saveGoal(goal);
+    @GetMapping("/save_goal")
+    public Goal saveGoal() {
+        Goal docker_mysql = Goal.builder().goalId("200002").userId("100001").goalTitle("docker mysql").build();
+        return goalService.saveGoal(docker_mysql);
     }
 
     @GetMapping("/delete_goal_by_id")
