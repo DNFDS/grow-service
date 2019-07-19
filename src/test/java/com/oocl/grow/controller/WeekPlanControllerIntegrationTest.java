@@ -56,4 +56,5 @@ public class WeekPlanControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.weekPlanId", is(week_plan_test.getWeekPlanId())));
     }
+
 }

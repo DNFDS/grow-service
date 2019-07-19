@@ -10,5 +10,6 @@ import java.util.List;
 public interface WeekPlanRepository  extends JpaRepository<WeekPlan, String> {
     List<WeekPlan> findAllByGoalId(String goal_id);
     WeekPlan findByWeekPlanId(String week_id);
+    Integer deleteWeekPlanByWeekPlanId(String week_plan_id);
 
 }

@@ -44,4 +44,6 @@ public class WeekPlanRepositoryIntegrationTest {
         List<WeekPlan> found = weekPlanRepository.findAllByGoalId("200001");
         assertThat(found.get(0).getWeekPlanId()).isEqualTo("300001");
     }
+
+
 }
